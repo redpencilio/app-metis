@@ -29,3 +29,9 @@ services:
       - db:database
     volumes:
       - ./config/resources:/config
+
+  resource-labels:
+    image: lblod/resource-label-service:0.0.3
+    restart: always
+    labels:
+      - "logging=true"
