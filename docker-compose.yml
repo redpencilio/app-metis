@@ -29,3 +29,9 @@ services:
       - db:database
     volumes:
       - ./config/resources:/config
+  migrations:
+    image: semtech/mu-migrations-service
+    links:
+      - db:database
+    volumes:
+      - ./config/migrations:/data/migrations
