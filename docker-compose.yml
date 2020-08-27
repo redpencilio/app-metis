@@ -1,6 +1,16 @@
 version: '3.4'
 
 services:
+  metis:
+    image: lblod/frontend-data.lblod.info:0.2.3
+    links:
+      - identifier:backend
+    environment:
+      EMBER_BASE_URL: "http://data.lblod.info/"
+    restart: always
+    logging: *default-logging
+    labels:
+      - "logging=true"
   identifier:
     image: semtech/mu-identifier:1.7.0
     links:
