@@ -8,7 +8,6 @@ services:
     environment:
       EMBER_BASE_URL: "http://data.lblod.info/"
     restart: always
-    logging: *default-logging
     labels:
       - "logging=true"
   identifier:
