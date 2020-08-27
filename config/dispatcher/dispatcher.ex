@@ -26,6 +26,16 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://uriinfo/"
   end
 
+  get "/assets/*path", @any do
+    forward conn, path, "http://metis/assets/"
+  end
+
+  match "/*_path", @html do
+    # *_path allows a path to be supplied, but will not yield
+    # an error that we don't use the path variable.
+    forward conn, [], "http://metis/index.html"
+  end
+
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
