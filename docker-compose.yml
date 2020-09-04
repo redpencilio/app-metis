@@ -33,5 +33,14 @@ services:
   resource-labels:
     image: lblod/resource-label-service:0.0.3
     restart: always
+    links:
+      - db:database
     labels:
       - "logging=true"
+
+  migrations:
+    image: semtech/mu-migrations-service
+    links:
+      - db:database
+    volumes:
+      - ./config/migrations:/data/migrations
